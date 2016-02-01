@@ -33,7 +33,6 @@ static NSDictionary *notificationDesign;
 @property (nonatomic, assign) CGFloat textSpaceLeft;
 @property (nonatomic, assign) CGFloat textSpaceRight;
 
-@property (copy) void (^callback)();
 @property (copy) void (^buttonCallback)();
 
 - (CGFloat)updateHeightOfMessageView;
@@ -358,12 +357,7 @@ static NSDictionary *notificationDesign;
 {
     // user tapped on the message
     dispatch_async(dispatch_get_main_queue(), ^
-    {
-        if (self.callback)
-        {
-            self.callback();
-        }
-        
+    {   
         [[TSMessage sharedMessage] performSelector:@selector(fadeOutNotification:)
                                         withObject:self];
     });

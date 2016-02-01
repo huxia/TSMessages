@@ -303,6 +303,11 @@ static BOOL notificationActive;
          {
              [self fadeInCurrentNotification];
          }
+
+         if (currentView.callback)
+         {
+            currentView.callback();
+         }
      }];
 }
 
